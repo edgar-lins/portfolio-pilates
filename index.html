@@ -8,7 +8,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: system-ui, sans-serif; color: #2d2a26; background: #faf7f2; }
     .aviso { background: #2d2a26; color: #faf7f2; text-align: center; font-size: 12px; padding: 6px; }
-     .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center;
+    .hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center;
             align-items: center; text-align: center; padding: 24px; gap: 16px; color: #fff;
             background: linear-gradient(rgba(45,42,38,.55), rgba(45,42,38,.55)),
                         url("img/hero.jpg") center / cover no-repeat; }
@@ -16,7 +16,7 @@
     .hero p { font-size: 18px; max-width: 480px; color: #f0ebe3; }
     .btn { background: #8a9a5b; color: #fff; text-decoration: none; padding: 14px 28px;
            border-radius: 999px; font-weight: 600; }
-        .planos { padding: 64px 24px; max-width: 960px; margin: 0 auto; }
+    .planos { padding: 64px 24px; max-width: 960px; margin: 0 auto; }
     .planos h2 { text-align: center; font-size: 28px; margin-bottom: 32px; }
     .grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
     .card { background: #fff; border-radius: 16px; padding: 24px; border: 1px solid #ece6dc; }
@@ -25,17 +25,30 @@
     .preco { font-size: 32px; font-weight: 700; margin: 12px 0; }
     .preco small { font-size: 14px; font-weight: 400; color: #6b645b; }
     .card ul { list-style: none; color: #6b645b; line-height: 1.8; }
-        .local { padding: 64px 24px; max-width: 960px; margin: 0 auto; }
+    .local { padding: 64px 24px; max-width: 960px; margin: 0 auto; }
     .local h2 { text-align: center; font-size: 28px; margin-bottom: 32px; }
     .local-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                    gap: 24px; align-items: center; }
     .local-info p { color: #6b645b; line-height: 1.8; }
+    .local-info p + p { margin-top: 16px; }
     .local-info strong { color: #2d2a26; }
     .mapa iframe { width: 100%; height: 320px; border: 0; border-radius: 16px; }
+    .passos { padding: 64px 24px 0; max-width: 960px; margin: 0 auto; }
+    .passos h2 { text-align: center; font-size: 28px; margin-bottom: 32px; }
+    .passos-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                    gap: 16px; counter-reset: passo; }
+    .passo { background: #fff; border-radius: 16px; padding: 24px; border: 1px solid #ece6dc;
+             counter-increment: passo; }
+    .passo::before { content: counter(passo); display: inline-flex; align-items: center;
+                     justify-content: center; width: 36px; height: 36px; border-radius: 50%;
+                     background: #8a9a5b; color: #fff; font-weight: 700; margin-bottom: 12px; }
+    .passo h3 { font-size: 18px; margin-bottom: 8px; }
+    .passo p { color: #6b645b; line-height: 1.6; }
   </style>
 </head>
 <body>
   <div class="aviso">Projeto conceito — estúdio fictício criado para portfólio</div>
+
   <section class="hero">
     <h1>Studio Equilíbrio</h1>
     <p>Pilates em turmas de até 4 pessoas na Vila Mariana. Primeira aula experimental grátis.</p>
@@ -43,7 +56,26 @@
       Agendar aula grátis no WhatsApp
     </a>
   </section>
-    <section class="planos">
+
+  <section class="passos">
+    <h2>Como funciona a aula experimental</h2>
+    <div class="passos-grade">
+      <div class="passo">
+        <h3>Chame no WhatsApp</h3>
+        <p>Escolha o melhor dia e horário. Respondemos em poucos minutos.</p>
+      </div>
+      <div class="passo">
+        <h3>Venha com roupa confortável</h3>
+        <p>Não precisa de experiência. A instrutora adapta tudo ao seu nível.</p>
+      </div>
+      <div class="passo">
+        <h3>Receba seu plano</h3>
+        <p>No fim da aula, você sai com uma recomendação de plano para o seu objetivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="planos">
     <h2>Planos</h2>
     <div class="grade">
       <div class="card">
@@ -63,7 +95,8 @@
       </div>
     </div>
   </section>
-    <section class="local">
+
+  <section class="local">
     <h2>Onde estamos</h2>
     <div class="local-grade">
       <div class="local-info">
@@ -71,7 +104,12 @@
         <p><strong>Horários</strong><br>Seg a Sex: 6h às 21h<br>Sábado: 8h às 12h</p>
       </div>
       <div class="mapa">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.410532677664!2d-46.636939923724384!3d-23.589605378780487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2ba6648ec1%3A0x830e19278f434b35!2sVila%20Mariana!5e0!3m2!1spt-BR!2sbr!4v1795659904466!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <iframe
+          title="Mapa da localização do Studio Equilíbrio"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.410532677664!2d-46.636939923724384!3d-23.589605378780487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a2ba6648ec1%3A0x830e19278f434b35!2sVila%20Mariana!5e0!3m2!1spt-BR!2sbr!4v1795659904466!5m2!1spt-BR!2sbr"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
     </div>
   </section>
