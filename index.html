@@ -25,7 +25,7 @@
     .preco { font-size: 32px; font-weight: 700; margin: 12px 0; }
     .preco small { font-size: 14px; font-weight: 400; color: #6b645b; }
     .card ul { list-style: none; color: #6b645b; line-height: 1.8; }
-    .local { padding: 64px 24px; max-width: 960px; margin: 0 auto; }
+    .local { padding: 0 24px 64px; max-width: 960px; margin: 0 auto; }
     .local h2 { text-align: center; font-size: 28px; margin-bottom: 32px; }
     .local-grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
                    gap: 24px; align-items: center; }
@@ -44,6 +44,8 @@
                      background: #8a9a5b; color: #fff; font-weight: 700; margin-bottom: 12px; }
     .passo h3 { font-size: 18px; margin-bottom: 8px; }
     .passo p { color: #6b645b; line-height: 1.6; }
+    .whats-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 10;
+                        box-shadow: 0 4px 16px rgba(0,0,0,.25); }
   </style>
 </head>
 <body>
@@ -113,5 +115,10 @@
       </div>
     </div>
   </section>
+
+  <a class="btn whats-flutuante" aria-label="Falar com o estúdio no WhatsApp"
+     href="https://wa.me/5511999999999?text=Oi!%20Quero%20agendar%20minha%20aula%20experimental">
+    WhatsApp
+  </a>
 </body>
 </html>
