@@ -29,6 +29,8 @@
     h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 400; letter-spacing: -0.015em;
                  font-variant-numeric: lining-nums; }
     section h2 { font-size: clamp(28px, 4vw, 40px); text-align: center; margin-bottom: 32px; }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 88px; }
 
     /* ===== 3. COMPONENTES ===== */
     .aviso { background: var(--cor-texto); color: var(--cor-fundo); text-align: center;
@@ -45,6 +47,24 @@
                color: var(--cor-destaque-escuro); margin-bottom: 12px; }
     .whats-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 10;
                        box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+    .topo { position: sticky; top: 0; z-index: 20;
+            background: color-mix(in srgb, var(--cor-fundo) 85%, transparent);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--cor-borda); }
+    .topo-conteudo { max-width: 1200px; margin: 0 auto; padding: 12px 16px;
+                     display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .marca { font-family: var(--fonte-titulo); font-size: 19px; color: var(--cor-texto);
+             text-decoration: none; white-space: nowrap; }
+    .menu { display: none; gap: 32px; }
+    .menu a { font-size: 14px; font-weight: 500; color: var(--cor-texto-suave); text-decoration: none; }
+    .menu a:hover { color: var(--cor-texto); }
+    .btn-pequeno { padding: 10px 18px; font-size: 14px; white-space: nowrap; }
+
+    @media (min-width: 900px) {
+      .topo-conteudo { padding: 16px 40px; gap: 24px; }
+      .marca { font-size: 22px; }
+      .menu { display: flex; }
+    }
 
     /* ===== 4. SEÇÕES (na ordem da página) ===== */
     /* Hero */
@@ -144,13 +164,27 @@
 <body>
   <div class="aviso">Projeto conceito — estúdio fictício criado para portfólio</div>
 
+  <header class="topo">
+    <div class="topo-conteudo">
+      <a class="marca" href="#">Studio Equilíbrio</a>
+      <nav class="menu" aria-label="Seções do site">
+        <a href="#como-funciona">Aula experimental</a>
+        <a href="#planos">Planos</a>
+        <a href="#onde-estamos">Onde estamos</a>
+      </nav>
+      <a class="btn btn-pequeno" data-whats="Oi! Quero agendar minha aula experimental">
+        Agendar aula grátis
+      </a>
+    </div>
+  </header>
+
   <section class="hero">
     <div class="hero-texto">
       <span class="chip">Vila Mariana · São Paulo</span>
       <h1>Studio Equilíbrio</h1>
       <p>Pilates em turmas de até 4 pessoas na Vila Mariana. Primeira aula experimental grátis.</p>
       <div class="hero-acoes">
-        <a class="btn" href="https://wa.me/5511999999999?text=Oi!%20Quero%20agendar%20minha%20aula%20experimental">
+        <a class="btn" data-whats="Oi! Quero agendar minha aula experimental">
           Agendar aula grátis no WhatsApp
         </a>
         <span class="hero-nota">Sem compromisso · Resposta em minutos</span>
@@ -166,7 +200,7 @@
     </div>
   </section>
 
-  <section class="passos">
+  <section class="passos" id="como-funciona">
     <span class="eyebrow">Primeira visita</span>
     <h2>Como funciona a aula experimental</h2>
     <div class="passos-grade">
@@ -185,7 +219,7 @@
     </div>
   </section>
 
-  <section class="planos">
+  <section class="planos" id="planos">
     <span class="eyebrow">Investimento</span>
     <h2>Planos</h2>
     <div class="grade">
@@ -197,8 +231,7 @@
           <li>4 aulas no mês</li>
           <li>Turmas de até 4 pessoas</li>
         </ul>
-        <a class="btn btn-contorno btn-plano"
-           href="https://wa.me/5511999999999?text=Oi!%20Tenho%20interesse%20no%20plano%201x%20por%20semana">
+        <a class="btn btn-contorno btn-plano" data-whats="Oi! Tenho interesse no plano 1x por semana">
           Quero este plano
         </a>
       </div>
@@ -212,8 +245,7 @@
           <li>Turmas de até 4 pessoas</li>
           <li>Avaliação postural inclusa</li>
         </ul>
-        <a class="btn btn-plano"
-           href="https://wa.me/5511999999999?text=Oi!%20Tenho%20interesse%20no%20plano%202x%20por%20semana">
+        <a class="btn btn-plano" data-whats="Oi! Tenho interesse no plano 2x por semana">
           Quero este plano
         </a>
       </div>
@@ -226,15 +258,14 @@
           <li>Turmas de até 4 pessoas</li>
           <li>Avaliação postural inclusa</li>
         </ul>
-        <a class="btn btn-contorno btn-plano"
-           href="https://wa.me/5511999999999?text=Oi!%20Tenho%20interesse%20no%20plano%203x%20por%20semana">
+        <a class="btn btn-contorno btn-plano" data-whats="Oi! Tenho interesse no plano 3x por semana">
           Quero este plano
         </a>
       </div>
     </div>
   </section>
 
-  <section class="local">
+  <section class="local" id="onde-estamos">
     <span class="eyebrow">Localização</span>
     <h2>Onde estamos</h2>
     <div class="local-grade">
@@ -270,13 +301,27 @@
 
   <footer class="rodape">
     <p><strong>Studio Equilíbrio</strong> · Vila Mariana, São Paulo</p>
-    <p><a href="https://wa.me/5511999999999">Fale conosco no WhatsApp</a></p>
+    <p><a data-whats="">Fale conosco no WhatsApp</a></p>
     <p class="credito">Site criado por <a href="https://github.com/edgar-lins">Edgar Lins</a></p>
   </footer>
 
   <a class="btn whats-flutuante" aria-label="Falar com o estúdio no WhatsApp"
-     href="https://wa.me/5511999999999?text=Oi!%20Quero%20agendar%20minha%20aula%20experimental">
+     data-whats="Oi! Quero agendar minha aula experimental">
     WhatsApp
   </a>
+
+  <script>
+    // ===== CONFIGURAÇÃO DO CLIENTE =====
+    const WHATSAPP = '5511999999999';
+
+    // Monta o link de todo elemento que tiver o atributo data-whats
+    document.querySelectorAll('[data-whats]').forEach(function (link) {
+      const mensagem = link.dataset.whats;
+      link.href = 'https://wa.me/' + WHATSAPP +
+                  (mensagem ? '?text=' + encodeURIComponent(mensagem) : '');
+      link.target = '_blank';
+      link.rel = 'noopener';
+    });
+  </script>
 </body>
 </html>
