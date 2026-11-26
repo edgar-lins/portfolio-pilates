@@ -19,6 +19,7 @@
       --cor-fundo: #fdfbf7;
       --cor-fundo-alt: #f5efeb;
       --cor-borda: #e8dfd8;
+      --cor-whatsapp: #1f9e55;
       --fonte-titulo: 'Playfair Display', Georgia, serif;
       --fonte-texto: 'Plus Jakarta Sans', system-ui, sans-serif;
     }
@@ -45,8 +46,13 @@
     .eyebrow { display: block; text-align: center; font-size: 12px; font-weight: 600;
                letter-spacing: .12em; text-transform: uppercase;
                color: var(--cor-destaque-escuro); margin-bottom: 12px; }
-    .whats-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 10;
-                       box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+    .whats-flutuante { position: fixed; right: 20px; bottom: 20px; z-index: 10;
+                       width: 56px; height: 56px; border-radius: 50%;
+                       display: grid; place-items: center;
+                       background: var(--cor-whatsapp); color: #fff;
+                       box-shadow: 0 8px 24px rgba(44,36,32,.18); transition: transform .2s; }
+    .whats-flutuante:hover { transform: scale(1.06); }
+    .whats-flutuante:focus-visible { outline: 2px solid var(--cor-whatsapp); outline-offset: 3px; }
     .topo { position: sticky; top: 0; z-index: 20;
             background: color-mix(in srgb, var(--cor-fundo) 85%, transparent);
             backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -154,11 +160,20 @@
                    border: 0; border-radius: 20px; }
 
     /* Rodapé */
-    .rodape { background: var(--cor-texto); color: var(--cor-fundo); text-align: center;
-              padding: 40px 24px 96px; font-size: 14px; line-height: 1.8; }
-    .rodape a { color: var(--cor-fundo); }
-    .credito { margin-top: 16px; color: #a39b8f; font-size: 12px; }
-    .credito a { color: #a39b8f; }
+    .rodape { background: var(--cor-fundo-alt); border-top: 1px solid var(--cor-borda);
+              padding: 48px 24px 112px; }
+    .rodape-conteudo { max-width: 960px; margin: 0 auto; display: grid; gap: 24px; }
+    .rodape p { font-size: 14px; line-height: 1.7; color: var(--cor-texto-suave); }
+    .rodape .rodape-marca { font-family: var(--fonte-titulo); font-size: 24px; color: var(--cor-texto); }
+    .rodape a { color: var(--cor-destaque-escuro); font-weight: 600; text-decoration: none; }
+    .rodape a:hover { text-decoration: underline; }
+    .rodape .credito { max-width: 960px; margin: 32px auto 0; padding-top: 24px;
+                       border-top: 1px solid var(--cor-borda); font-size: 12px; }
+
+    @media (min-width: 900px) {
+      .rodape-conteudo { grid-template-columns: 1fr auto; align-items: end; }
+      .rodape-contato { text-align: right; }
+    }
   </style>
 </head>
 <body>
@@ -300,14 +315,27 @@
   </section>
 
   <footer class="rodape">
-    <p><strong>Studio Equilíbrio</strong> · Vila Mariana, São Paulo</p>
-    <p><a data-whats="">Fale conosco no WhatsApp</a></p>
-    <p class="credito">Site criado por <a href="https://github.com/edgar-lins">Edgar Lins</a></p>
+    <div class="rodape-conteudo">
+      <div>
+        <p class="rodape-marca">Studio Equilíbrio</p>
+        <p>Pilates em turmas reduzidas na Vila Mariana, São Paulo.</p>
+      </div>
+      <div class="rodape-contato">
+        <p>A 3 minutos do Metrô Vila Mariana</p>
+        <p><a data-whats="">Fale conosco no WhatsApp</a></p>
+      </div>
+    </div>
+    <p class="credito">Site criado por
+      <a href="https://www.instagram.com/estudionomapa/" target="_blank" rel="noopener">Estúdio no Mapa</a>
+    </p>
   </footer>
 
-  <a class="btn whats-flutuante" aria-label="Falar com o estúdio no WhatsApp"
+  <a class="whats-flutuante" aria-label="Falar com o estúdio no WhatsApp"
      data-whats="Oi! Quero agendar minha aula experimental">
-    WhatsApp
+    <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor"
+            d="M12 3C7 3 3 6.6 3 11c0 2.2 1 4.2 2.6 5.6L5 21l4.3-2.2c.9.2 1.8.3 2.7.3 5 0 9-3.6 9-8.1S17 3 12 3z"/>
+    </svg>
   </a>
 
   <script>
